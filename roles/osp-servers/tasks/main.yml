@@ -11,16 +11,16 @@
     security_groups: "{{ item.value.security_group }}"
     nics:
       - net-name: int_network    
-      meta: "{{ item.value.meta }}"
-      userdata: |
-        #!/bin/bash
-        curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
-        cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
-        curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
-        cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
+    meta: "{{ item.value.meta }}"
+    userdata: |
+      #!/bin/bash
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+      curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+      cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
   with_dict: "{{ osp_servers }}"
 
-- name: Add floating IP to Servers
+# - name: Add floating IP to Servers
    
 
-- name: Wait for server to be available
+# - name: Wait for server to be available
