@@ -13,11 +13,9 @@
       - net-name: int_network    
     meta: "{{ item.value.meta }}"
     userdata: |
-      #!/bin/bash
-      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
-      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
-      curl -o /tmp/internal.repo http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
-      cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
+      ssh_authorized_keys:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOyER4xUht6QGT/IgKjGH7gtE/KMR1mhDUTCJSEdPv9NYz3dhwnSyqOqpk14Px9PLp7RboMMqk5T3xbBspHmCX9Hig4N3dzY6+NYm3TGLAX5Y4gNmZVfvoqS7epwg/M97jCyUTvD4uZOJxTJ9BIz47YTzTijs3YXsxv78TA9cahdlrqsPMBBfCcMEG/HIbd+xh4KdXXjO7R+J/o/2g6zCvCta9y2SSdSGBSZuUeviJk7qQWSrpfs5OIADRBNr18YqKWwnVdfSFAblBirbN1B0pM2PJUWMPrwxyc+A2y4nJSoDZzIhCH8wLm0+y1CH/L0ObiA4i005s3yErT3nyMgKD opentlc-mgr@admin.na.shared.opentlc.com"
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBTCYfp/LvJHpyMqZBeXoX/jHz/LB4yAeRBMYLf3V/kopcIetQQHYIkgW96LB9CmQABX9heoopsDK8tj5IZgz//dPqfYapm+S4mz8jIOFvIwmUle6iM2KdBvMGqIBKiURVoTwQZZMoWzZEqmaHFrRuNrZCDUJ8B3LmNBqp3UQtnYUuG2Vtg/q94Wqlv7nGiBJ/bT0HhPjrsFGXJs29F354rK3Xp9KeKO9RB2PYNgIJ22KFNOZ3IV67I5bd2uJQXHEuQYqAenHh/cIt1GicOVGHKr9RQOngz4093/tuVfiwhIyKZVWu4Xm3G8x6v9nyg4ifi5XSBNvXBCuXSdivv+yd"
   with_dict: "{{ osp_servers }}"
 
 # - name: Add floating IP to Servers
