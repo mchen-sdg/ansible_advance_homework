@@ -3,17 +3,17 @@
 - include_tasks: pre-tasks.yml
 - include_tasks: create-flavor.yml
   vars:
-      ansible_python_interpreter: /usr/local/bin/python3
+      ansible_python_interpreter: /usr/local/bin/python3.7
 - include_tasks: create-keypair.yml
   vars:
-      ansible_python_interpreter: /usr/local/bin/python3
+      ansible_python_interpreter: /usr/local/bin/python3.7
 - include_tasks: create-sg.yml
   vars:
-      ansible_python_interpreter: /usr/local/bin/python3
+      ansible_python_interpreter: /usr/local/bin/python3.7
 - include_tasks: create-image.yml
   vars:
-      ansible_python_interpreter: /usr/local/bin/python3
+      ansible_python_interpreter: /usr/local/bin/python3.7
 - include_tasks: create-network.yml
   vars:
-      ansible_python_interpreter: /usr/local/bin/python3
+      ansible_python_interpreter: /usr/local/bin/python3.7
 
