@@ -13,8 +13,6 @@
   become: yes
   roles:
     - setup-workstation
-  vars:
-    ansbible_python_interpreter: /usr/bin/python
 
 - import_playbook: site-install-isolated-node.yml 
 
