@@ -6,6 +6,11 @@
     external: "{{ item.value.external }}"
   with_dict: "{{ osp_networks }}"
 
+- name: Verify if Subnet has been configured
+  stat:
+    path: /etc/subnetConfigured
+  register: result
+
 - name: Configuration of Subnets for Public and Private SubNets
   os_subnet:
     cloud: "{{ item.value.cloud_name }}"
@@ -22,6 +27,14 @@
       - destination: 192.168.0.0/24
         nexthop: 192.168.0.0
   with_dict: "{{ osp_networks }}"
+  register: _configSubnet
+  when: result.stat.exists == false
+
+- name: Create file if _configSubnet succeeds
+  file:
+    path: /etc/subnetConfigured
+    state: touch
+  when: _configSubnet.rc == 0
 
 - name: Create Router
   os_router:
