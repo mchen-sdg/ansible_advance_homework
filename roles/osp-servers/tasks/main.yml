@@ -1,12 +1,8 @@
 ---
-
-- name: Show Ext_Network
-  debug:
-    var: item
-  loop: "{{ osp_servers | dict2items }}"
   
-# tasks file for osp.servers
-#- name: Create new server instances and attaches them a network and passes metadata to the instance
+ tasks file for osp.servers
+- name: Create new server instances and attaches them a network and passes metadata to the instance
+  debug:
 #  os_server:
 #    state: present
 #    cloud: "{{ cloud }}"
@@ -27,9 +23,9 @@
 #      #cloud-config
 #      ssh_authorized_keys:
 #          - "{{ opentlc_pubkey }}"
-#  loop: "{{ osp_servers|dict2items }}"
-#  loop_control:
-#    label: "{{ item.value.name }}"
+  loop: "{{ osp_servers|dict2items }}"
+  loop_control:
+    label: "{{ item.value.name }}"
 
 #- name: Add floating IP to Servers
    
