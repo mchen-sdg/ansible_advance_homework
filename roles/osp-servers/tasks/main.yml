@@ -26,6 +26,8 @@
   loop: "{{ osp_servers|dict2items }}"
   loop_control:
     label: "{{ item.value.name }}"
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
 #- name: Add floating IP to Servers
    
