@@ -18,6 +18,7 @@
       ssh_authorized_keys:
           - "{{ openstack_pubkey }}"
           - "{{ opentlc_pubkey }}"
+    ssh_key_data: /root/.ssh/openstack.pem
   loop: "{{ osp_servers|dict2items }}"
   loop_control:
     label: "{{ item.value.name }}"
