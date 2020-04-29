@@ -1,8 +1,10 @@
 - hosts: workstation
-  gather_facts: no
-  become: yes
-  debug:
-    msg: wtf
+  become: true
+  gather_facts: false 
+  tasks:
+    -name: test 
+       debug:
+         msg: wtf
 #  roles:
 #    - osp-servers
   vars:
