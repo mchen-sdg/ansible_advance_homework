@@ -3,9 +3,8 @@
 - name: install pip
   yum:
     name:
-      - python-pip  
-  vars:
-    ansible_python_interpreter: /usr/bin/python
+      - python3-pip.noarch  
+
 - name: Install openstacksdk library
   pip:
     name: openstacksdk
